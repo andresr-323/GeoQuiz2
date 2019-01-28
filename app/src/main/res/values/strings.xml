@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="question_text">Question_Text</string>
+    <string name="true_btn">True</string>
+    <string name="false_btn">False</string>
+    <string name="next_btn">Next</string>
+
+    <string name="correct_toast">Correct!</string>
+    <string name="incorrect_toast">Incorrect!</string>
+</resources>
