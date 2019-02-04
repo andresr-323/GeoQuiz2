@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ public class QuizActivity extends AppCompatActivity {
     private Button mFalsebtn;
     private Button mNextbtn;
     private Button mBackbtn;
+    private Button mCheatbtn;
     private TextView mText;
 
     private int qNum = 0;
@@ -33,8 +35,7 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
 
         mText = (TextView) findViewById(R.id.question_text);
-        int q = questions[qNum].getQuizQuestid();
-        mText.setText(q);
+        updateQuestion();
 
         mTruebtn = findViewById(R.id.true_btn);
         mTruebtn.setOnClickListener(new View.OnClickListener(){
@@ -64,8 +65,7 @@ public class QuizActivity extends AppCompatActivity {
             public void onClick(View v){
                 //Log.d("TAG", String.valueOf(qNum));
                 qNum = (qNum + 1) % questions.length;
-                int q = questions[qNum].getQuizQuestid();
-                mText.setText(q);
+                updateQuestion();
 
             }
         });
@@ -73,22 +73,36 @@ public class QuizActivity extends AppCompatActivity {
         mText = findViewById(R.id.question_text);
         mText.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                qNum = (qNum + 1) % questions.length;
-                int q = questions[qNum].getQuizQuestid();
-                mText.setText(q);
+                    qNum = (qNum + 1) % questions.length;
+                updateQuestion();
             }
         });
 
         mBackbtn = findViewById(R.id.back_btn);
         mBackbtn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                
+                if(((qNum - 1) % questions.length) < 0){
+                    qNum--;
+                    updateQuestion();
+                }else{
+                    qNum = (qNum - 1) % questions.length;
+                    updateQuestion();
+                }
             }
         });
 
+        mCheatbtn = findViewById(R.id.cheat_btn);
+        mCheatbtn.setOnClickListener(new View.OnClickListener(){
+         public void onClick(View v){
+             Intent i = new Intent(QuizActivity.this, CheatActivity.class);
+             startActivity(i);
+         }
+        });
+    }
 
-
-
+    private void updateQuestion(){
+        int q = questions[qNum].getQuizQuestid();
+        mText.setText(q);
     }
 
 }

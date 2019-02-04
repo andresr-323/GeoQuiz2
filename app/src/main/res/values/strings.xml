@@ -4,7 +4,17 @@
     <string name="true_btn">True</string>
     <string name="false_btn">False</string>
     <string name="next_btn">Next</string>
+    <string name="back_btn">Previous</string>
 
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
+
+    <string name="question_1">new york is the largest city</string>
+    <string name="question_2">sun rises in the west</string>
+    <string name="question_3">pacific ocean is larger than atlantic ocean</string>
+
+    <string name="Warning_text">Are you sure you want to see the Answer</string>
+    <string name="show_ans_btn">Show Answer</string>
+    <string name="cheat_btn">Cheat</string>
+    <string name="judgment_toast">You Cheated!</string>
 </resources>
